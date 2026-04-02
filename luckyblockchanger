@@ -1,5 +1,5 @@
 --// LocalScript → StarterPlayerScripts
--- OG Block Visual Script (changes "Secret" Lucky Blocks to look like "OG")
+-- XynzzScript - OG Block Visual Script (Blue Edition)
 
 local Players          = game:GetService("Players")
 local StarterGui       = game:GetService("StarterGui")
@@ -11,14 +11,14 @@ local playerGui = player:WaitForChild("PlayerGui")
 
 -- Create ScreenGui + UI
 local sg = Instance.new("ScreenGui")
-sg.Name = "OGBlockUI"
+sg.Name = "XynzzBlockUI"
 sg.ResetOnSpawn = false
 sg.Parent = playerGui
 
 local main = Instance.new("Frame")
 main.Size       = UDim2.new(0, 220, 0, 150)
 main.Position   = UDim2.new(0.5, -110, 0.5, -75)
-main.BackgroundColor3 = Color3.fromRGB(18, 18, 22)
+main.BackgroundColor3 = Color3.fromRGB(10, 15, 30)
 main.BorderSizePixel = 0
 main.ClipsDescendants = true
 main.Parent = sg
@@ -28,7 +28,7 @@ corner.CornerRadius = UDim.new(0, 12)
 corner.Parent = main
 
 local stroke = Instance.new("UIStroke")
-stroke.Color      = Color3.fromRGB(255, 221, 85)
+stroke.Color      = Color3.fromRGB(50, 150, 255)
 stroke.Thickness  = 2
 stroke.Transparency = 0.45
 stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
@@ -44,8 +44,8 @@ local title = Instance.new("TextLabel")
 title.Size               = UDim2.new(1, 0, 1, 0)
 title.BackgroundTransparency = 1
 title.Font               = Enum.Font.GothamBold
-title.Text               = "OG BLOCK"
-title.TextColor3         = Color3.fromRGB(255, 221, 85)
+title.Text               = "XYNZZ SCRIPT"
+title.TextColor3         = Color3.fromRGB(100, 200, 255)
 title.TextSize           = 20
 title.TextStrokeTransparency = 0.75
 title.TextStrokeColor3   = Color3.new(0,0,0)
@@ -56,8 +56,8 @@ local btn = Instance.new("TextButton")
 btn.Name = "InjectButton"
 btn.Size       = UDim2.new(0.88, 0, 0, 54)
 btn.Position   = UDim2.new(0.06, 0, 0, 62)
-btn.BackgroundColor3 = Color3.fromRGB(255, 190, 40)
-btn.TextColor3       = Color3.fromRGB(22, 22, 26)
+btn.BackgroundColor3 = Color3.fromRGB(30, 120, 255)
+btn.TextColor3       = Color3.fromRGB(255, 255, 255)
 btn.Font             = Enum.Font.GothamBlack
 btn.Text             = "OG BLOCK"
 btn.TextSize         = 26
@@ -69,16 +69,16 @@ btnCorner.CornerRadius = UDim.new(0, 9)
 btnCorner.Parent = btn
 
 local btnStroke = Instance.new("UIStroke")
-btnStroke.Color      = Color3.fromRGB(255, 221, 85)
+btnStroke.Color      = Color3.fromRGB(80, 180, 255)
 btnStroke.Thickness  = 2.5
 btnStroke.Transparency = 0.35
 btnStroke.Parent = btn
 
 local UIGrad = Instance.new("UIGradient")
 UIGrad.Color = ColorSequence.new{
-    ColorSequenceKeypoint.new(0.0, Color3.fromRGB(255,240,140)),
-    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255,190,40)),
-    ColorSequenceKeypoint.new(1.0, Color3.fromRGB(255,240,140)),
+    ColorSequenceKeypoint.new(0.0, Color3.fromRGB(100, 180, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(30, 120, 255)),
+    ColorSequenceKeypoint.new(1.0, Color3.fromRGB(100, 180, 255)),
 }
 UIGrad.Rotation = 35
 UIGrad.Parent = btn
@@ -124,13 +124,13 @@ end
 
 -- Button Hover & Click Animations
 btn.MouseEnter:Connect(function()
-    tween(btn,       {BackgroundColor3 = Color3.fromRGB(255, 215, 80)}, 0.25)
+    tween(btn,       {BackgroundColor3 = Color3.fromRGB(60, 150, 255)}, 0.25)
     tween(btnStroke, {Transparency = 0.1}, 0.25)
     tween(UIGrad,    {Rotation = 70}, 0.8)
 end)
 
 btn.MouseLeave:Connect(function()
-    tween(btn,       {BackgroundColor3 = Color3.fromRGB(255, 190, 40)}, 0.25)
+    tween(btn,       {BackgroundColor3 = Color3.fromRGB(30, 120, 255)}, 0.25)
     tween(btnStroke, {Transparency = 0.35}, 0.25)
     tween(UIGrad,    {Rotation = 35}, 0.8)
 end)
@@ -146,7 +146,7 @@ end)
 -- Notification Helper
 local function notify(text)
     StarterGui:SetCore("SendNotification", {
-        Title = "OG Block",
+        Title = "XynzzScript",
         Text = text,
         Duration = 5,
     })
@@ -170,7 +170,7 @@ local function tryMakeOG(block)
 
     if block.Text == "Secret" then
         block.Text = "OG"
-        block.TextColor3 = Color3.fromRGB(255, 221, 85)
+        block.TextColor3 = Color3.fromRGB(100, 200, 255)
         
         if not block:FindFirstChildOfClass("UIStroke") then
             local st = Instance.new("UIStroke")
@@ -182,9 +182,9 @@ local function tryMakeOG(block)
         local grad = block:FindFirstChildOfClass("UIGradient")
         if grad then
             grad.Color = ColorSequence.new{
-                ColorSequenceKeypoint.new(0,   Color3.fromRGB(255,235,120)),
-                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(255,190,50)),
-                ColorSequenceKeypoint.new(1,   Color3.fromRGB(255,235,120)),
+                ColorSequenceKeypoint.new(0,   Color3.fromRGB(150, 220, 255)),
+                ColorSequenceKeypoint.new(0.5, Color3.fromRGB(30, 120, 255)),
+                ColorSequenceKeypoint.new(1,   Color3.fromRGB(150, 220, 255)),
             }
         end
         
@@ -231,19 +231,4 @@ local function injectNow()
     end
 end
 
--- Button Click
-btn.Activated:Connect(function()
-    local oldText = btn.Text
-    btn.Text = "Injecting..."
-    tween(btn, {BackgroundColor3 = Color3.fromRGB(90, 200, 90)}, 0.15)
-    
-    task.delay(0.9, function()
-        injectNow()
-        
-        btn.Text = oldText
-        tween(btn, {BackgroundColor3 = Color3.fromRGB(255, 190, 40)}, 0.35)
-    end)
-end)
-
--- Initial Notification
-notify("UI Loaded • Drag from title bar • Click button to activate OG blocks")
+-- Button Clic
