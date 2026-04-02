@@ -231,4 +231,19 @@ local function injectNow()
     end
 end
 
--- Button Clic
+-- Button Click
+btn.Activated:Connect(function()
+    local oldText = btn.Text
+    btn.Text = "Injecting..."
+    tween(btn, {BackgroundColor3 = Color3.fromRGB(50, 200, 255)}, 0.15)
+    
+    task.delay(0.9, function()
+        injectNow()
+        
+        btn.Text = oldText
+        tween(btn, {BackgroundColor3 = Color3.fromRGB(30, 120, 255)}, 0.35)
+    end)
+end)
+
+-- Initial Notification
+notify("UI Loaded • Drag from title bar • Click button to activate OG blocks")
